@@ -16,7 +16,7 @@ const LoginForm = ({role, title, subtitle}) => {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       <LoginLeftSide />
-      <div className="flex-1 flex items-center justify-center sm:p-12 bg-yellow-300">
+      <div className="flex-1 flex items-center justify-center sm:p-12 bg-white">
         <div className="w-full max-w-md animate-fade-in">
           <Link to="/login" className="inline-flex items-center gap-2 text-slate-700 hover:text-slate-900 text-sm mb-10 transition-colors">
             <ArrowLeftIcon size={16}/>Back to portals
