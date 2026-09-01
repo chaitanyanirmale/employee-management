@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   const navItems = [
     {name: "Dashboard", href:'/dashboard', icon: LayoutGridIcon},
-    role === "ADMIN" ?  {name: "Employees", href:'/employees', icon: UserIcon} : {name: "Attendence", href:'/attendence', icon: CalendarIcon},
+    role === "ADMIN" ?  {name: "Employees", href:'/employees', icon: UserIcon} : {name: "Attendance", href:'/attendance', icon: CalendarIcon},
     {name: "Leave", href:'/leave', icon: FileTextIcon},
     {name: "Payslips", href:'/payslips', icon: DollarSignIcon},
     {name: "Settings", href:'/settings', icon: SettingsIcon},
@@ -91,7 +91,7 @@ const Sidebar = () => {
   )
   return (
     <>
-      <button onClick={() => setMobileMenu(true)} className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-900 text-gray-600 rounded-lg shadow-lg border border-white/10">
+      <button onClick={() => setMobileMenu(true)} className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-slate-900 text-gray-200 rounded-lg shadow-lg border border-white/10">
         <MenuIcon size={20}/>
       </button>
 
@@ -99,11 +99,11 @@ const Sidebar = () => {
         <div className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40" onClick={() => setMobileMenu(false)}/>
       )}
 
-      <aside className="hidden lg:flex flex-col h-full w-[260px] bg-linear-to-b from-yellow-300 via-yellow-400 to-yellow-400 text-gray-700 shrink-0 border-r border-white/4">
+      <aside className="hidden lg:flex flex-col h-full w-[260px] bg-linear-to-b from-yellow-300 via-yellow-300 to-yellow-300/60 text-gray-700 shrink-0 border-r border-white/4">
         {sidebarContent}
       </aside>
 
-      <aside className={`lg:hidden fixed inset-y-0 left-0 w-72 bg-linear-to-b from-yellow-300 via-yellow-400 to-yellow-400 text-gray-700 z-50 flex flex-col transform transition-transform duration-300 ${mobileMenu ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`lg:hidden fixed inset-y-0 left-0 w-72 bg-linear-to-b from-yellow-300 via-yellow-300 to-yellow-300/60 text-gray-700 z-50 flex flex-col transform transition-transform duration-300 ${mobileMenu ? 'translate-x-0' : '-translate-x-full'}`}>
         {sidebarContent}
       </aside>
     </>
