@@ -1,5 +1,5 @@
-import Attendance from "../models/attendance.model";
-import Employee from "../models/employee.model";
+import Attendance from "../models/attendance.model.js";
+import Employee from "../models/employee.model.js";
 
 
 export const clockInOut = async (req, res) => {
