@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Loader2, Save, User } from 'lucide-react'
+import api from '../api/api'
+import toast from 'react-hot-toast'
 
 
 const ProfileForm = ({initialData, onSccess}) => {
@@ -9,6 +11,19 @@ const ProfileForm = ({initialData, onSccess}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
+    setError('')
+    setMessage('')
+    const formData = new FormData(e.currentTarget)
+    try {
+      await api.post('/profile', formData)
+      setMessage('Profile updated successfully')
+      onSccess?.();
+    } catch (error) {
+      toast.error(error.response?.data?.error || error.message)
+    } finally {
+      setLoading(false)
+    }
   }
   return (
     <form onSubmit={handleSubmit} className='card p-5 sm:p-6 mb-6'>

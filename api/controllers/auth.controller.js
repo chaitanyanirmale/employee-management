@@ -30,12 +30,12 @@ export const login = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: '7d'});
     return res.json({user: payload, token})
   } catch (error) {
-    console.erroe('Login error: ', error);
+    console.error('Login error: ', error);
     return res.status(500).json({error: 'Login Failed'})
   }
 }
 
-export const session = () =>{
+export const session = (req, res) =>{
   const session = req.session;
   return res.json({user: session})
 }

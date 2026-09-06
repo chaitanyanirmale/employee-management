@@ -9,7 +9,10 @@ export const getEmployees = async (req, res) => {
     const where = {};
     if(department) where.department = department;
 
-    const employees = (await Employee.find(where)).toSorted({createdAt: -1}).populate("userId", "email role").lean();
+    const employees = await Employee.find(where)
+      .populate("userId", "email role")
+      .sort({ createdAt: -1 })
+      .lean();
 
     const result = employees.map((emp)=> ({
       ...emp, 
@@ -45,9 +48,6 @@ export const createEmployee = async (req, res) => {
       success: true, employee
     })
   } catch (error) {
-    if(error.code === 11000){
-      return res.status(400).json({error: "Email already exists"})
-    }
     console.log("Create employee error", error)
     return res.status(500).json({error: 'Failed to create employee'});
   }

@@ -24,7 +24,7 @@ export const updateProfile = async (req, res) => {
     if(!employee) {
       return res.status(404).json({error: "Employee not found"})
     }  
-    if(!employee.isDeleted){
+    if(employee.isDeleted){
       return res.status(403).json({error: "Your account is deactivated. You can not update your profile"})
     }
     await Employee.findByIdAndUpdate(employee._id, {

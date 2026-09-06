@@ -9,7 +9,7 @@ export const getDashboard = async (req, res) => {
   try {
     const session = req.session;
     if(session.role === 'ADMIN'){
-      const [totalEmployees, todayAttendance, pendingLeaves] = await Promis.all([
+      const [totalEmployees, todayAttendance, pendingLeaves] = await Promise.all([
         Employee.countDocuments({isDeleted: {$ne : true}}),
         Attendance.countDocuments({
           date: {
